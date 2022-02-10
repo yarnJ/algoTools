@@ -1,0 +1,242 @@
+@import "new_styles/abstract/mixins";
+
+.header-container {
+  height: 8rem;
+  // backdrop-filter: blur(1.6rem);
+  // position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent;
+  background-color: rgba(25, 25, 53, 0.75);
+
+  @include respond(xs) {
+    height: 6.5rem;
+  }
+}
+
+.header {
+  max-width: 139.2rem;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  position: relative;
+}
+
+.logo {
+  height: 6rem;
+  width: auto;
+  width: auto;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  z-index: 9;
+  &:hover {
+    cursor: pointer;
+  }
+  svg {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+
+  @include respond(md) {
+    height: 5rem;
+  }
+
+  @include respond(sm) {
+    height: 4rem;
+    margin-right: 2rem;
+  }
+
+  @include respond(xs) {
+    height: 3.5rem;
+  }
+}
+
+.nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2rem;
+
+  & > * + * {
+    margin-left: 1.7rem;
+  }
+
+  @include respond(md) {
+    & > * + * {
+      margin-left: 0.5rem;
+    }
+  }
+
+  @include respond(sm) {
+    display: none;
+  }
+}
+
+.nav-item {
+  font-weight: 500;
+  color: var(--color-purple-light);
+  padding: 1rem 2rem;
+  font-size: 1.55rem;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-purple-light);
+    text-decoration: none;
+  }
+
+  @include respond(md) {
+    font-size: 1.4rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+.actions {
+  display: grid;
+  // grid-template-columns: 28rem repeat(3, auto);
+  // grid-template-columns: 28rem auto;
+  grid-gap: 2rem;
+  align-items: center;
+  text-align: right;
+
+  @include respond(md) {
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1rem;
+  }
+
+  @include respond(sm) {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  @include respond(xs) {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+div.search-input {
+  @include respond(xs) {
+    display: none;
+  }
+}
+
+.action {
+  color: var(--color-white);
+  background: none;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 4.3rem;
+  width: 4.3rem;
+  border: none;
+
+  svg {
+    height: 2.4rem;
+    width: auto;
+  }
+
+  @include respond(md) {
+    svg {
+      height: 2rem;
+    }
+  }
+
+  @include respond(sm) {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  color: var(--color-white);
+
+  & svg {
+    height: 2.2rem;
+  }
+
+  @include respond(sm) {
+    display: flex;
+  }
+}
+
+.aside {
+  background-color: var(--bg-main-color);
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+
+  @include respond(sm) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 6.5rem;
+    padding: 1.6rem;
+
+    & > button {
+      @extend .action;
+
+      & svg {
+        transform: scale(0.8);
+      }
+    }
+  }
+
+  &__content {
+    padding: 2rem 2.5rem;
+    height: 100%;
+  }
+
+  &__search-input {
+    display: none;
+    margin-bottom: 3rem;
+
+    @include respond(xs) {
+      display: flex;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+
+    & > * + * {
+      margin-top: 1rem;
+    }
+  }
+
+  &__nav-item {
+    @extend .nav-item;
+
+    padding: 1rem 0;
+    font-size: 1.5rem;
+  }
+}

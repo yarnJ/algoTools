@@ -1,0 +1,26 @@
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
+import rootReducer from "./rootReducer"
+
+import { middleware } from "./middleware"
+import { initApp } from "./initApp"
+
+const customizedMiddleware = getDefaultMiddleware({
+  serializableCheck: false,
+})
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [...customizedMiddleware, ...middleware],
+  devTools: process.env.NODE_ENV !== "production",
+})
+
+// if (process.env.NODE_ENV === "development" && module.hot) {
+//   module.hot.accept("./rootReducer", () => {
+//     const newRootReducer = require("./rootReducer").default
+
+//     store.replaceReducer(newRootReducer)
+//   })
+// }
+
+initApp(store)
+
+export default store

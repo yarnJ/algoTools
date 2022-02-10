@@ -1,0 +1,15 @@
+@import "new_styles/abstract/mixins";
+
+.container {
+  max-width: 139.2rem;
+  padding: 5rem 1.6rem;
+  margin: 0 auto;
+
+  & > * + * {
+    margin-top: 4.5rem;
+  }
+
+  @include respond(xs) {
+    padding: 3rem 1.6rem;
+  }
+}

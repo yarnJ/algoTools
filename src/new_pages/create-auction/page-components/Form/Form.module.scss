@@ -1,0 +1,103 @@
+@import "new_styles/abstract/mixins";
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 5.6rem;
+  padding-top: 1rem;
+
+  @include respond(md) {
+    grid-template-columns: 1fr 40rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .title {
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+    }
+
+    .connect-btn {
+      align-self: center;
+    }
+  }
+
+  @include respond(sm) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 2rem;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+
+  &__inputs {
+    margin-bottom: auto;
+
+    & > * + * {
+      margin-top: 1.7rem;
+    }
+  }
+}
+
+.title {
+  font-size: 3.4rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 1rem;
+
+  @include respond(sm) {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  color: #67677e;
+  font-size: 1.7rem;
+  margin-bottom: 3rem;
+  font-weight: 300;
+  display: block;
+
+  @include respond(sm) {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+
+  @include respond(xs) {
+    font-size: 1.5rem;
+  }
+}
+
+.connect-btn {
+  align-self: flex-start;
+}
+
+.submit-btn {
+  margin-top: 4rem;
+  align-self: flex-start;
+}
+
+.right {
+  border-radius: 0.5rem;
+  width: 35.3rem;
+  min-height: 44.7rem;
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #181832;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #313161;
+    text-align: center;
+    line-height: 1.5;
+    text-transform: capitalize;
+    padding: 2rem;
+  }
+}
